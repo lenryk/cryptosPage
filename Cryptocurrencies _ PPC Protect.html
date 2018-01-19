@@ -122,6 +122,7 @@ Click the help icon above to learn more.
 
 .active {
 	border: 2px solid #2392ec;
+	height: 285px;
 }
 
 .hidden {
@@ -1643,14 +1644,16 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
 
         $(".flex-item-crypto").click(function() {
 
+            if($(this).hasClass("wide")) {
+            	return;
+            }
+
             $(".flex-item-crypto").removeClass("active");
-            $(`#${this.id}`).toggleClass("active");
             $("symbol").hide();
-            $(`#${this.id}-arrow`).css("display","block");
+			$(`#${this.id}`).addClass("active");
+			$(`#${this.id}-arrow`).css("display","block");
 
             if($(window).width() >= (1199-17)) {
-                console.log("we are at 4");
-
                 if((this.id) === "litecoin" || (this.id) === "ethereum" || (this.id) === "raiblocks" || (this.id) === "bitcoin"){
                     let excludingRow = $(".flex-item-crypto.wide").map(function(i,e) {
                        if(e.id !== "litecoin-box" && e.id !== "ethereum-box" && e.id !== "raiblocks-box" && e.id !== "bitcoin-box") {
@@ -1658,7 +1661,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
 					   }
 					});
                     excludingRow.slideUp();
-                    console.log("1st row clicked");
                     $("#bitcoin-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
 				}
                 else if((this.id) === "ripple" || (this.id) === "neo" || (this.id) === "dogecoin" || (this.id) === "monero"){
@@ -1668,7 +1670,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("2nd row clicked");
                     $("#monero-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "dash" || (this.id) === "waves" || (this.id) === "bitcoincash" || (this.id) === "verge"){
@@ -1678,7 +1679,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("3rd row clicked");
                     $("#verge-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "vechain" || (this.id) === "siacoin" || (this.id) === "iota"){
@@ -1688,15 +1688,12 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("4th row clicked");
                     $("#iota-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
 
 
             }
             else if ($(window).width() <= (1198-17) && $(window).width() >= (992-17)) {
-                console.log("we are at 3");
-
                 if((this.id) === "litecoin" || (this.id) === "ethereum" || (this.id) === "raiblocks"){
                     let excludingRow = $(".flex-item-crypto.wide").map(function(i,e) {
                         if(e.id !== "litecoin-box" && e.id !== "ethereum-box" && e.id !== "raiblocks-box") {
@@ -1704,7 +1701,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("1st row clicked");
                     $("#raiblocks-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "bitcoin" || (this.id) === "ripple" || (this.id) === "neo"){
@@ -1714,7 +1710,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("2nd row clicked");
                     $("#neo-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "dogecoin" || (this.id) === "monero" || (this.id) === "dash"){
@@ -1724,7 +1719,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("3rd row clicked");
                     $("#dash-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "waves" || (this.id) === "bitcoincash" || (this.id) === "verge"){
@@ -1734,7 +1728,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("4th row clicked");
                     $("#verge-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "vechain" || (this.id) === "siacoin" || (this.id) === "iota"){
@@ -1744,14 +1737,11 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("final row clicked");
                     $("#iota-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
 
             }
             else if ($(window).width() <= (991-17) && $(window).width() >= (768-17)) {
-                console.log("we are at 2");
-
                 if((this.id) === "litecoin" || (this.id) === "ethereum"){
                     let excludingRow = $(".flex-item-crypto.wide").map(function(i,e) {
                         if(e.id !== "litecoin-box" && e.id !== "ethereum-box") {
@@ -1759,7 +1749,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("1st row clicked");
                     $("#ethereum-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "raiblocks" || (this.id) === "bitcoin"){
@@ -1769,7 +1758,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("2nd row clicked");
                     $("#bitcoin-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "ripple" || (this.id) === "neo"){
@@ -1779,7 +1767,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("3rd row clicked");
                     $("#neo-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "dogecoin" || (this.id) === "monero"){
@@ -1789,7 +1776,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("2nd row clicked");
                     $("#monero-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "dash" || (this.id) === "waves"){
@@ -1799,7 +1785,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("4th row clicked");
                     $("#waves-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "bitcoincash" || (this.id) === "verge"){
@@ -1809,7 +1794,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("5th row clicked");
                     $("#verge-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "vechain" || (this.id) === "siacoin"){
@@ -1819,7 +1803,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("6th row clicked");
                     $("#siacoin-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
                 else if((this.id) === "iota"){
@@ -1829,19 +1812,14 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
                         }
                     });
                     excludingRow.slideUp();
-                    console.log("final row clicked");
                     $("#iota-box").html($(`#${this.id}-content`).children().clone()).stop().slideDown();
                 }
             }
             else {
-                console.log("we are at 1");
-
                 $(".flex-item-crypto.wide").slideUp();
 
                 $(`#${this.id}-box`).html($(`#${this.id}-content`).children().clone()).stop().slideDown();
             }
-            console.log(this.id);
-        
         });
 
 		$(window).resize(function() {
@@ -1871,16 +1849,6 @@ var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"h
 
         });
 
-        $(document).on('click', function (e) {
-
-            if(e.target.localName === "body") {
-                console.log("lost focus");
-                $(".dropdown-item").find("img").css("top", "50%");
-                $(".dropdown-item").find("img").css("transform", "rotate(360deg)");
-                $(".dropdown-item").find(".dropdown-item-content").toggle(false);
-                $(".dropdown-item").css("top", "25%");
-            }
-        });
 
         //Pricing
 
